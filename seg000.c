@@ -231,11 +231,12 @@ int __pascal far process_key() {
 	if (key == 0) return 0;
 	if (is_keyboard_mode) clear_kbd_buf();
 	switch (key) {
-		case 27: // esc
+		case 8: // esc
 			is_paused = 1;
 		break;
 		case ' ': // space
 			is_show_time = 1;
+			is_paused = 1;
 		break;
 		case 1: // ctrl-a
 			if (current_level != 15) {

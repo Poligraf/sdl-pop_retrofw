@@ -61,7 +61,7 @@ void __pascal far restore_stuff() {
 int __pascal far key_test_quit() {
 	word key;
 	key = read_key();
-	if (key == 0x11) { // ctrl-q
+	if (key == (0x1B)) { // ctrl-q
 		quit(0);
 	}
 	return key;
