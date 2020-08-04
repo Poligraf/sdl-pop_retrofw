@@ -223,6 +223,8 @@ extern byte* doorlink1_ad;
 
 // data:4CC6
 extern sbyte control_shift;
+
+extern sbyte control_backspace;
 // data:461C
 extern sbyte control_y;
 // data:4612
@@ -442,7 +444,7 @@ extern short prev_char_col_left;
 extern short char_bottom_row;
 // data:3D34
 extern short guard_notice_timer;
-// data:42A0 
+// data:42A0
 extern short jumped_through_mirror;
 // data:2292
 extern const short y_clip[] INIT(= {-60, 3, 66, 129, 192});

@@ -228,15 +228,17 @@ int __pascal far process_key() {
 	if (rem_min != 0 && Kid.alive > 6 && (control_shift || key == 13)) {
 		key = 1; // ctrl-a
 	}
+
+	if (control_backspace){
+			is_paused = 1;
+
+	}
 	if (key == 0) return 0;
 	if (is_keyboard_mode) clear_kbd_buf();
 	switch (key) {
-		case 8: // esc
-			is_paused = 1;
-		break;
+
 		case ' ': // space
 			is_show_time = 1;
-			is_paused = 1;
 		break;
 		case 1: // ctrl-a
 			if (current_level != 15) {
@@ -985,6 +987,7 @@ int __pascal far do_paused() {
 	key = 0;
 	next_room = 0;
 	control_shift = 0;
+	control_backspace = 0;
 	control_y = 0;
 	control_x = 0;
 	if (is_joyst_mode) {
@@ -1002,7 +1005,7 @@ int __pascal far do_paused() {
 		} while (! process_key());
 		erase_bottom_text(1);
 	}
-	return key || control_shift;
+	return key || control_shift || control_backspace;
 }
 
 // seg000:1500
@@ -1030,6 +1033,7 @@ void __pascal far read_keyb_control() {
 		control_x = 1;
 	}
 	control_shift = -(key_states[SDLK_LSHIFT] || key_states[SDLK_RSHIFT]);
+	control_backspace = key_states[SDLK_BACKSPACE];
 }
 
 // seg000:156D
