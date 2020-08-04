@@ -283,7 +283,7 @@ int __pascal far process_key() {
 			answer_text = "PRINCE OF PERSIA  V1.0";
 			need_show_text = 1;
 		break;
-		case 'L': // shift-l
+		case 9 	: // shift-l
 			if (current_level <= 3 || cheats_enabled) {
 				if (current_level == 14) {
 					next_level = 1;
@@ -432,7 +432,7 @@ void __pascal far play_frame() {
 		// Special event: level 12 running exit
 		if (Kid.room == 23) {
 			++next_level;
-// Sounds must be stopped, because play_level_2() checks next_level only if there are no sounds playing. 
+// Sounds must be stopped, because play_level_2() checks next_level only if there are no sounds playing.
 			stop_sounds();
 			seamless = 1;
 		}
@@ -1116,7 +1116,7 @@ void __pascal far show_title() {
 	load_title_images(1);
 	current_target_surface = offscreen_surface;
 	do_wait(0);
-	
+
 	draw_image_2(0 /*main title image*/, chtab_title50, xlat_title_50, 0, 0, blitters_0_no_transp);
 	fade_in_2(offscreen_surface, 0x1000);
 	play_sound_from_buffer(sound_pointers[54]); // main theme
@@ -1124,26 +1124,26 @@ void __pascal far show_title() {
 	start_timer(0, 0x82);
 	draw_image_2(1 /*Broderbund Software presents*/, chtab_title50, xlat_title_50, 96, 106, blitters_0_no_transp);
 	do_wait(0);
-	
+
 	//wait_time0 = 0xCD;
 	start_timer(0,0xCD);
 	method_1_blit_rect(onscreen_surface_, offscreen_surface, &rect_titles, &rect_titles, blitters_0_no_transp);
 	draw_image_2(0 /*main title image*/, chtab_title50, xlat_title_50, 0, 0, blitters_0_no_transp);
 	do_wait(0);
-	
+
 	//wait_time0 = 0x41;
 	start_timer(0,0x41);
 	method_1_blit_rect(onscreen_surface_, offscreen_surface, &rect_titles, &rect_titles, blitters_0_no_transp);
 	draw_image_2(0 /*main title image*/, chtab_title50, xlat_title_50, 0, 0, blitters_0_no_transp);
 	draw_image_2(2 /*a game by Jordan Mechner*/, chtab_title50, xlat_title_50, 96, 122, blitters_0_no_transp);
 	do_wait(0);
-	
+
 	//wait_time0 = 0x10E;
 	start_timer(0,0x10E);
 	method_1_blit_rect(onscreen_surface_, offscreen_surface, &rect_titles, &rect_titles, blitters_0_no_transp);
 	draw_image_2(0 /*main title image*/, chtab_title50, xlat_title_50, 0, 0, blitters_0_no_transp);
 	do_wait(0);
-	
+
 	//wait_time0 = 0xEB;
 	start_timer(0,0xEB);
 	method_1_blit_rect(onscreen_surface_, offscreen_surface, &rect_titles, &rect_titles, blitters_0_no_transp);
@@ -1165,9 +1165,9 @@ void __pascal far show_title() {
 	pop_wait(0, 0x258);
 	fade_out_2(0x800);
 	release_title_images();
-	
+
 	load_intro(0, &pv_scene, 0);
-	
+
 	load_title_images(1);
 	current_target_surface = offscreen_surface;
 	draw_image_2(0 /*story frame*/, chtab_title40, xlat_title_40, 0, 0, blitters_0_no_transp);
