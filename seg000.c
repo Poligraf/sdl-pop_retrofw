@@ -71,7 +71,7 @@ void far pop_main() {
 	current_target_surface = rect_sthg(onscreen_surface_, &screen_rect);
 	show_loading();
 	set_joy_mode();
-	cheats_enabled = check_param("megahit") != 0;
+	cheats_enabled = check_param("megahit") == 0;
 #ifdef __DEBUG__
 	cheats_enabled = 1; // debug
 #endif
