@@ -225,6 +225,8 @@ extern byte* doorlink1_ad;
 extern sbyte control_shift;
 
 extern sbyte control_backspace;
+
+extern sbyte control_tab;
 // data:461C
 extern sbyte control_y;
 // data:4612

@@ -71,7 +71,7 @@ void far pop_main() {
 	current_target_surface = rect_sthg(onscreen_surface_, &screen_rect);
 	show_loading();
 	set_joy_mode();
-	cheats_enabled = check_param("megahit") == 0;
+	cheats_enabled = 1;
 #ifdef __DEBUG__
 	cheats_enabled = 1; // debug
 #endif
@@ -286,29 +286,33 @@ int __pascal far process_key() {
 			answer_text = "PRINCE OF PERSIA  V1.0";
 			need_show_text = 1;
 		break;
-		case 9 	: // shift-l
-			if (current_level <= 3 || cheats_enabled) {
-				if (current_level == 14) {
-					next_level = 1;
-				} else {
-					if (current_level == 15 && cheats_enabled) {
-#ifdef USE_COPYPROT
-						next_level = copyprot_level;
-						copyprot_level = -1;
-#endif
-					} else {
-						next_level = current_level + 1;
-						if (!cheats_enabled && rem_min > 15) {
-							rem_min = 15;
-							rem_tick = 719;
-						}
-					}
-				}
-				stop_sounds();
-			}
-		break;
+
 		//...
 	}
+
+
+	if (control_tab) { // shift-l
+		if (cheats_enabled) {
+			if (current_level == 14) {
+				next_level = 1;
+			} else {
+				if (current_level == 15 && cheats_enabled) {
+#ifdef USE_COPYPROT
+					next_level = copyprot_level;
+					copyprot_level = -1;
+#endif
+				} else {
+					next_level = current_level + 1;
+					if (!cheats_enabled && rem_min > 15) {
+						rem_min = 15;
+						rem_tick = 719;
+					}
+				}
+			}
+			stop_sounds();
+		}
+
+}
 	if (cheats_enabled) {
 		switch (key) {
 			case 'c':
@@ -1034,6 +1038,7 @@ void __pascal far read_keyb_control() {
 	}
 	control_shift = -(key_states[SDLK_LSHIFT] || key_states[SDLK_RSHIFT]);
 	control_backspace = key_states[SDLK_BACKSPACE];
+	control_tab=key_states[SDLK_TAB];
 }
 
 // seg000:156D
